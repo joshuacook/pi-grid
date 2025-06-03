@@ -11,7 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Configure
+    - name: Install ARM cross-compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+    - name: Configure (native)
       run: cmake -S . -B build
-    - name: Build
+    - name: Build (native)
       run: cmake --build build
+    - name: Configure (arm64)
+      run: cmake -S . -B build-arm64 -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm64.cmake
+    - name: Build (arm64)
+      run: cmake --build build-arm64

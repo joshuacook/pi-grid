@@ -12,6 +12,14 @@ cmake -S . -B build
 cmake --build build
 ```
 
+To cross-compile for an ARM target (e.g. Raspberry Pi), you will need the
+`aarch64-linux-gnu-gcc` toolchain installed.  Pass the provided toolchain file:
+
+```bash
+cmake -S . -B build-arm64 -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm64.cmake
+cmake --build build-arm64
+```
+
 The binary will be created at `build/hello` and simply prints `hello` when
 executed.  More functionality will land in subsequent epics.
 
