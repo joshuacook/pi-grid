@@ -4,7 +4,16 @@ This repository hosts the code for the pi-grid project. The goal is to map grid 
 
 ## Getting Started
 
-At this stage the repository contains a basic project skeleton. Future updates will introduce a CMake build system and additional scripts. To build or test the project, clone the repo and follow the instructions in upcoming epics.
+This repository currently provides a minimal C build using CMake.  To build the
+`hello` binary locally, run the following commands from the project root:
+
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
+The binary will be created at `build/hello` and simply prints `hello` when
+executed.  More functionality will land in subsequent epics.
 
 ## License
 
