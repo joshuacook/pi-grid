@@ -1,0 +1,98 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Qt-Designer
+
+moc_*.cpp
+
+qrc_*.cpp
+
+ui_*.h
+
+
+# CodeBlocks
+*.depend
+*.layout
+*.cbp
+*.autosave
+
+# Visual Studio
+*.vcxproj*
+*.vcproj*
+*.sln*
+*.ncb
+*.suo
+*.opensdf
+*.opendb
+*.v12.suo
+*.vcproj.*.user
+*.vcxproj.*.user
+*.user
+*.DS_Store
+
+# IDE Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+
+# Other
+*.orig
+*~
+
+# Build directory
+build/
+
+# Dependency directories (remove the comment below to include it)
+#external/
