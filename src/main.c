@@ -1,15 +1,12 @@
 #include <stdio.h>
 
 #if defined(HAVE_LIBMONOME) && defined(HAVE_ALSA)
-#include <monome.h>
+#include "note_utils.h"
 #include <alsa/asoundlib.h>
+#include <monome.h>
 
 static snd_seq_t *seq;
 static int out_port;
-
-static int xy_to_note(int x, int y) {
-    return y * 16 + x;
-}
 
 static void send_note(int note, int velocity) {
     snd_seq_event_t ev;
@@ -42,9 +39,9 @@ int main(void) {
         return 1;
     }
     snd_seq_set_client_name(seq, "pi-grid");
-    out_port = snd_seq_create_simple_port(seq, "out",
-        SND_SEQ_PORT_CAP_READ|SND_SEQ_PORT_CAP_SUBS_READ,
-        SND_SEQ_PORT_TYPE_MIDI_GENERIC|SND_SEQ_PORT_TYPE_APPLICATION);
+    out_port = snd_seq_create_simple_port(
+        seq, "out", SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ,
+        SND_SEQ_PORT_TYPE_MIDI_GENERIC | SND_SEQ_PORT_TYPE_APPLICATION);
     if (out_port < 0) {
         fprintf(stderr, "Failed to create MIDI port\n");
         return 1;
