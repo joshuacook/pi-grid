@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake pkg-config libmonome-dev libasound2-dev gcc-aarch64-linux-gnu
+      - name: Build
+        run: |
+          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm64.cmake
+          cmake --build build --config Release
+      - name: Package
+        run: |
+          tar -C build -czf pi-grid-${{ github.ref_name }}.tar.gz pi-grid
+          cp contrib/grid-midi.service grid-midi.service
+          tar -rf pi-grid-${{ github.ref_name }}.tar.gz grid-midi.service
+          sha256sum pi-grid-${{ github.ref_name }}.tar.gz > pi-grid-${{ github.ref_name }}.sha256
+      - name: Upload release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            pi-grid-${{ github.ref_name }}.tar.gz
+            pi-grid-${{ github.ref_name }}.sha256

@@ -1,0 +1,10 @@
+[Unit]
+Description=pi-grid MIDI service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/pi-grid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
