@@ -31,6 +31,9 @@ make pi
 The resulting binary lives in `build` (or `build-pi` for cross‑compiled) and
 simply prints `hello` when executed.
 
+## Raspberry Pi Setup
+See [PI_SETUP.md](PI_SETUP.md) for preparing the Pi image and verifying PiSound.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file
