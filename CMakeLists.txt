@@ -13,13 +13,15 @@ pkg_check_modules(LIBMONOME libmonome)
 pkg_check_modules(ALSA alsa)
 
 # Add the executable
-add_executable(hello src/main.c)
+add_executable(pi-grid src/main.c)
 
 # Link against libmonome and ALSA if available
 if(LIBMONOME_FOUND AND ALSA_FOUND)
-  target_compile_definitions(hello PRIVATE HAVE_LIBMONOME HAVE_ALSA)
-  target_include_directories(hello PRIVATE ${LIBMONOME_INCLUDE_DIRS} ${ALSA_INCLUDE_DIRS})
-  target_link_libraries(hello PRIVATE ${LIBMONOME_LIBRARIES} ${ALSA_LIBRARIES})
+  target_compile_definitions(pi-grid PRIVATE HAVE_LIBMONOME HAVE_ALSA)
+  target_include_directories(pi-grid PRIVATE ${LIBMONOME_INCLUDE_DIRS} ${ALSA_INCLUDE_DIRS})
+  target_link_libraries(pi-grid PRIVATE ${LIBMONOME_LIBRARIES} ${ALSA_LIBRARIES})
 else()
   message(WARNING "Building without libmonome/ALSA; resulting binary prints hello only")
 endif()
+
+install(TARGETS pi-grid RUNTIME DESTINATION bin)

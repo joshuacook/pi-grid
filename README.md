@@ -14,7 +14,7 @@ multiple times as it skips already installed packages.
 
 ## Building
 
-Build the native `hello` binary using CMake:
+Build the native `pi-grid` binary using CMake:
 
 ```bash
 cmake -S . -B build
@@ -29,13 +29,13 @@ make pi
 ```
 
 The resulting binary lives in `build` (or `build-pi` for cross‑compiled).
-When built with `libmonome` and `alsa-lib` available, running `./hello`
+When built with `libmonome` and `alsa-lib` available, running `./pi-grid`
 listens for Grid key events and emits MIDI notes on channel 10 using the
 mapping `note = y*16 + x`. Without those libraries present, the program
 falls back to printing `hello`.
 
 ## Raspberry Pi Setup
-See [PI_SETUP.md](PI_SETUP.md) for preparing the Pi image and verifying PiSound.
+See [PI_SETUP.md](PI_SETUP.md) for preparing the Pi image, installing the systemd service, and verifying PiSound.
 
 ## License
 
