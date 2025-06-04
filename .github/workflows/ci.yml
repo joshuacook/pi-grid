@@ -11,15 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Install ARM cross-compiler
+    - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+        sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu clang clang-tidy clang-format
     - name: Configure (native)
-      run: cmake -S . -B build
+      run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Build (native)
       run: cmake --build build
+    - name: Run clang-format
+      run: ./scripts/check_format.sh
+    - name: Run clang-tidy
+      run: ./scripts/run_tidy.sh
+    - name: Run tests
+      run: |
+        cd build && ctest --output-on-failure
     - name: Configure (arm64)
-      run: cmake -S . -B build-arm64 -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm64.cmake
+      run: cmake -S . -B build-arm64 -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm64.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Build (arm64)
       run: cmake --build build-arm64

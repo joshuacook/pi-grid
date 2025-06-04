@@ -34,6 +34,14 @@ listens for Grid key events and emits MIDI notes on channel 10 using the
 mapping `note = y*16 + x`. Without those libraries present, the program
 falls back to printing `hello`.
 
+## Testing
+
+Run the unit tests with CTest after building:
+
+```bash
+cd build && ctest
+```
+
 ## Raspberry Pi Setup
 See [PI_SETUP.md](PI_SETUP.md) for preparing the Pi image, installing the systemd service, and verifying PiSound.
 
