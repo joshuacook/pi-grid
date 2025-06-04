@@ -28,8 +28,11 @@ convenience target (uses `cmake/toolchain-arm64.cmake`).
 make pi
 ```
 
-The resulting binary lives in `build` (or `build-pi` for cross‑compiled) and
-simply prints `hello` when executed.
+The resulting binary lives in `build` (or `build-pi` for cross‑compiled).
+When built with `libmonome` and `alsa-lib` available, running `./hello`
+listens for Grid key events and emits MIDI notes on channel 10 using the
+mapping `note = y*16 + x`. Without those libraries present, the program
+falls back to printing `hello`.
 
 ## License
 
