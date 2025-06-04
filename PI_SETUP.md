@@ -32,4 +32,16 @@ This guide prepares a fresh Raspberry Pi OS image so the `pi-grid` program can r
    ```
 4. If the client appears, the PiSound MIDI ports are ready to use.
 
+## 3. Run as a service
+1. Install the binary to `/usr/local/bin` (from your build directory):
+   ```bash
+   sudo cmake --install build
+   ```
+2. Copy the provided service unit and enable it:
+   ```bash
+   sudo cp contrib/grid-midi.service /etc/systemd/system/
+   sudo systemctl enable --now grid-midi
+   ```
+3. Reboot to verify the service starts automatically.
+
 Your Raspberry Pi is now configured to run the `pi-grid` application.
