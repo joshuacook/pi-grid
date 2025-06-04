@@ -22,7 +22,7 @@
 ## Epic 3 — Core Feature: Note Output
 | ID | Story | Done When |
 |---|---|---|
-|3.1|**Grid press → Note‑On** — Pressing any Grid key sends a MIDI **Note‑On** on channel 10 with velocity 100; mapping is `note = y*16 + x`.|Verified via `aseqdump` or DAW MIDI monitor.|
+|3.1|**Grid press → Note‑On** — Pressing any Grid key sends a MIDI **Note‑On** on channel 10 with velocity 100; mapping is `note = y*16 + x`. Requires `libmonome` and `alsa-lib`.|Verified via `aseqdump` or DAW MIDI monitor.|
 |3.2|**Grid release → Note‑Off** — Releasing the key sends a matching **Note‑Off** (or Note‑On vel 0) so notes stop sounding.|No stuck notes after frantic button mashing.|
 
 ## Epic 4 — System Integration & Deployment
